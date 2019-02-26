@@ -48,7 +48,7 @@ http {
     large_client_header_buffers 4 16k;
 
     # Content Security Policy:
-    add_header Content-Security-Policy-Report-Only "default-src 'unsafe-eval' *.mckinsey.com";
+    add_header Content-Security-Policy-Report-Only "default-src 'unsafe-inline' *.mckinsey.com";
 
 
   <% if error_page %>

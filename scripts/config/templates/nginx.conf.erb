@@ -47,6 +47,10 @@ http {
     server_tokens off;
     large_client_header_buffers 4 16k;
 
+    # Content Security Policy:
+    add_header Content-Security-Policy-Report-Only "default-src 'self' *.mckinsey.com";
+
+
   <% if error_page %>
     error_page 404 500 /<%= error_page %>;
   <% end %>
@@ -110,7 +114,7 @@ http {
       <% if location == sendgrid_universal_identifier %>
           proxy_set_header 'Host' <%= host_for_sendgrid %>;
       <% end %>
-    
+
       <% %w(https).each do |scheme| %>
       proxy_redirect <%= hash["redirect_#{scheme}"] %> <%= location %>;
       <% end %>
